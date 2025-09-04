@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * This script calculates a loan fee based on a given amount and term
+ */
+
+use App\FeeCalculator\UI\CLI\LoanFeeCalculatorCommand;
+
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+// Ensure the script is run from the command line.
+if (PHP_SAPI !== 'cli') {
+    fwrite(STDERR, "This script can only be run from the command line\n");
+    exit(1);
+}
+
+global $argv;
+LoanFeeCalculatorCommand::run($argv);
